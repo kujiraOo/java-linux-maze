@@ -30,7 +30,7 @@ javac -d build/ src/*.java
 
 echo "Generating mazes...."
 
-# Create mazes with random amount of nodes, random path length from first node to last node and random amount of
+# Create mazes with random number of nodes, random path length from first node to last node and random number of
 # additional edges. Each mazes has at least one random solution from first node to last node
 # Solve the mazes and append results to maze-solution file
 
@@ -39,10 +39,10 @@ echo "" >> maze-solution
 
 for ((i=0;i < nMazes;i++)) do
     nNodes=$(( RANDOM % (100 - 10 + 1 ) + 10 ))
-    nSteps=$(( RANDOM % ($nNodes / 2 - 2 + 1) + 2 ))
+    pathLength=$(( RANDOM % ($nNodes / 2 + 1) ))
     nEdges=$(( RANDOM % ($nNodes - $nNodes / 2 + 1) + $nNodes / 2 ))
 
-    java -cp build/ MazeGenerator $nNodes $nSteps $nEdges > mazes/$RANDOM
+    java -cp build/ MazeGenerator $nNodes $pathLength $nEdges > mazes/$RANDOM
 done
 
 for f in mazes/*; do

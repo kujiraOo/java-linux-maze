@@ -27,7 +27,7 @@ public class MazeSolver {
         System.out.println("\nMaze solution from " + from + " to " + to);
 
         if (!visited[to]) {
-            System.out.println("No solution");
+            System.out.println("No solution\n");
             return;
         }
 

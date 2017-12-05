@@ -23,18 +23,20 @@ public class GraphGenerator {
     public Graph nextGraph() {
         Graph graph = new Graph(nNodes);
 
-        int[] path = new int[pathLength];
-        path[0] = 0;
-        path[pathLength - 1] = nNodes - 1;
+        if (pathLength > 0) {
+            int[] path = new int[pathLength];
+            path[0] = 0;
+            path[pathLength - 1] = nNodes - 1;
 
-        for (int i = 1; i < pathLength - 1; i++) {
-            path[i] = getNextPathStep(path);
-        }
+            for (int i = 1; i < pathLength - 1; i++) {
+                path[i] = getNextPathStep(path);
+            }
 
-        this.path = path;
+            this.path = path;
 
-        for (int i = 0; i < pathLength - 1; i++) {
-            graph.addEdge(path[i], path[i + 1]);
+            for (int i = 0; i < pathLength - 1; i++) {
+                graph.addEdge(path[i], path[i + 1]);
+            }
         }
 
         for (int i = 0; i < nEdges; i++) {
