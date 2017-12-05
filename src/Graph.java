@@ -99,11 +99,6 @@ public class Graph {
         return result.toString();
     }
 
-    /* print a graph */
-    void printGraph() {
-
-    }
-
     /* Depth First Search
 * start is the node from where the search begins
 * visited is an array of all the visited nodes

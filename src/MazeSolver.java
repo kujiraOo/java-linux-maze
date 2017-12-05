@@ -1,33 +1,44 @@
-public class Main {
+import java.io.File;
+
+public class MazeSolver {
     public static void main(String[] args) {
-        GraphGenerator graphGenerator = new GraphGenerator();
-        Graph graph = graphGenerator.nextGraph();
+        String filePath = args[0];
+        File mazeFile = new File(filePath);
+        Graph graph = new Graph();
+        graph.readGraph(mazeFile);
 
-        System.out.println(graph);
-        System.out.println();
-
-        for (int i : graphGenerator.getPath()) {
-            System.out.print(" " + i);
+        for (String arg : args) {
+            System.out.println(arg);
         }
 
-        System.out.println();
+        solve(graph);
+    }
 
-        int FROM = 0;
-        int TO  = 14;
+    public static void solve(Graph graph) {
+        int from = 0;
+        int to  = graph.nodes() - 1;
 
         boolean visited[] = new boolean[graph.nodes()];
         int pred[] = new int[graph.nodes()];
-        graph.dfs(FROM, visited, pred);
+        graph.dfs(from, visited, pred);
 
         // then check if there is a solution by looking from the backwards to the start
         int steps[] = new int[graph.nodes()];
-        System.out.println("\nMaze solution from " + FROM + " to " + TO);;
-        int n = mazeSolution(FROM, TO, pred, steps);
+        System.out.println("\nMaze solution from " + from + " to " + to);
+
+        if (!visited[to]) {
+            System.out.println("No solution");
+            return;
+        }
+
+        int n = mazeSolution(from, to, pred, steps);
         for (int i = 0; i < n; i++)
             System.out.print(steps[i] + " ");
         System.out.println();
-
+        System.out.println();
+        System.out.println();
     }
+
 
     private static int mazeSolution(int from, int to, int pred[], int steps[]) {
         int i, n, node;

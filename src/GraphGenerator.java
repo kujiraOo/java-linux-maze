@@ -8,10 +8,10 @@ public class GraphGenerator {
     private SecureRandom random;
     private int[] path;
 
-    public GraphGenerator() {
-        nNodes = 15;
-        pathLength = 5;
-        nEdges = 30;
+    public GraphGenerator(int nNodes, int pathLength, int nEdges) {
+        this.nNodes = nNodes;
+        this.pathLength = pathLength;
+        this.nEdges = nEdges;
 
         random = new SecureRandom();
     }
