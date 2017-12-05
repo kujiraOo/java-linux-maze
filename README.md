@@ -9,3 +9,7 @@ a path of random length from first node till last node.
 
 Second program - MazeSolver reads maze from file and tries to find a solution from first node to last node.
 
+
+Generated mazes' files can be found under mazes directory
+
+Solutions are written to maze-solution file in the root of the project
