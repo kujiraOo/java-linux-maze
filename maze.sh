@@ -43,7 +43,12 @@ for ((i=0;i < nMazes;i++)) do
     nEdges=$(( RANDOM % ($nNodes - $nNodes / 2 + 1) + $nNodes / 2 ))
 
     java -cp build/ MazeGenerator $nNodes $pathLength $nEdges > mazes/$RANDOM
+
+    echo -n "*"
 done
+
+echo
+echo "Solving mazes..."
 
 for f in mazes/*; do
     java -cp build/ MazeSolver $f 2>&1 | tee -a maze-solution
